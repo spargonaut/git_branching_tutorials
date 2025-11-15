@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "example": "playwright test --headed"
+    "example": "playwright test --headed tests/example.spec.ts",
+    "lgb": "playwright test --headed tests/learngitbranching.spec.ts"
   },
   "keywords": [],
   "author": "",
