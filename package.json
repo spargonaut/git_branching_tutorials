@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lgb": "playwright test --headed src/scenarios/learngitbranching.spec.ts"
+    "commits": "playwright test --headed src/scenarios/pure_commits.spec.ts"
   },
   "keywords": [],
   "author": "",
