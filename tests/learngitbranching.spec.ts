@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import {fail} from "node:assert"
+import {addCommit, clearCommandField} from "./utils/git_commands";
 
 test('visit the sandbox page', async ({ page }) => {
   test.setTimeout(0);
@@ -9,23 +10,14 @@ test('visit the sandbox page', async ({ page }) => {
 
     const commandField = page.locator("[id = 'commandTextField']");
 
-    await commandField.fill('git commit');
-    await commandField.press('Enter');
+    await addCommit(commandField);
+    await addCommit(commandField);
+    await addCommit(commandField);
+    await addCommit(commandField);
+    await addCommit(commandField);
+    await addCommit(commandField);
 
-    await commandField.fill('git commit');
-    await commandField.press('Enter');
-
-    await commandField.fill('git commit');
-    await commandField.press('Enter');
-
-    await commandField.fill('git commit');
-    await commandField.press('Enter');
-
-    await commandField.fill('git commit');
-    await commandField.press('Enter');
-
-    await commandField.fill('git commit');
-    await commandField.press('Enter');
+    await clearCommandField(commandField);
 
     await new Promise((resolve) => {
         page.on('close', resolve); // <-- add this
