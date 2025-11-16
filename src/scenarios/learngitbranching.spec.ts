@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import {fail} from "node:assert"
-import {addCommit, clearCommandField} from "./utils/git_commands";
+import {addCommit, clearCommandField} from "../utils/git_commands";
 
 test('visit the sandbox page', async ({ page }) => {
   test.setTimeout(0);
