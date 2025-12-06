@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "commits": "playwright test --headed src/scenarios/pure_commits.spec.ts"
+    "commits": "playwright test --headed src/scenarios/pure_commits.spec.ts",
+    "a-mess": "playwright test --headed src/scenarios/merge_mess.spec.ts"
   },
   "keywords": [],
   "author": "",
