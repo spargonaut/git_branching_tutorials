@@ -13,40 +13,44 @@ test('make a merge mess', async ({ page }) => {
   await page.goto('https://learngitbranching.js.org/');
   await page.getByText('this special link').click();
 
+    const mainBranchName = "main";
+    const branchOneName = "alice";
+    const branchTwoName = "bob";
+
     const commandField = page.locator("[id = 'commandTextField']");
     await addCommit(commandField);
 
-    await createBranch(commandField, "foo");
+    await createBranch(commandField, branchOneName);
     await addCommit(commandField);
     await addCommit(commandField);
 
-    await checkoutBranch(commandField, "main");
+    await checkoutBranch(commandField, mainBranchName);
     await addCommit(commandField);
 
-    await checkoutBranch(commandField, "foo");
-    await mergeOtherBranchIntoCurrentBranch(commandField, "main");
+    await checkoutBranch(commandField, branchOneName);
+    await mergeOtherBranchIntoCurrentBranch(commandField, mainBranchName);
     await addCommit(commandField);
 
-    await checkoutBranch(commandField, "main");
+    await checkoutBranch(commandField, mainBranchName);
     await addCommit(commandField);
 
-    await checkoutBranch(commandField, "foo");
+    await checkoutBranch(commandField, branchOneName);
     await addCommit(commandField);
 
-    await checkoutBranch(commandField, "foo");
-    await mergeOtherBranchIntoCurrentBranch(commandField, "main");
+    await checkoutBranch(commandField, branchOneName);
+    await mergeOtherBranchIntoCurrentBranch(commandField, mainBranchName);
     // ASK FOR A PR
 
     await checkoutCommit(commandField, "c1");
-    await createBranch(commandField, "bar");
+    await createBranch(commandField, branchTwoName);
     await addCommit(commandField);
     await addCommit(commandField);
     await addCommit(commandField);
-    await mergeOtherBranchIntoCurrentBranch(commandField, "main");
+    await mergeOtherBranchIntoCurrentBranch(commandField, mainBranchName);
 
-    // merge foo into main
-    await checkoutBranch(commandField, "main");
-    await mergeOtherBranchIntoCurrentBranch(commandField, "foo");
+    // merge branch one into main
+    await checkoutBranch(commandField, mainBranchName);
+    await mergeOtherBranchIntoCurrentBranch(commandField, branchOneName);
     await addCommit(commandField);
 
     await clearCommandField(commandField);
